@@ -471,6 +471,7 @@ homeassistant.components.sensor.*
 homeassistant.components.sensorpush_cloud.*
 homeassistant.components.sensoterra.*
 homeassistant.components.senz.*
+homeassistant.components.seymour_masking_screen.*
 homeassistant.components.sfr_box.*
 homeassistant.components.sftp_storage.*
 homeassistant.components.shell_command.*

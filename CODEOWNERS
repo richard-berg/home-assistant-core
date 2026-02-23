@@ -1469,6 +1469,8 @@ build.json @home-assistant/supervisor
 /homeassistant/components/seven_segments/ @fabaff
 /homeassistant/components/seventeentrack/ @shaiu
 /tests/components/seventeentrack/ @shaiu
+/homeassistant/components/seymour_masking_screen/ @richard-berg
+/tests/components/seymour_masking_screen/ @richard-berg
 /homeassistant/components/sfr_box/ @epenet
 /tests/components/sfr_box/ @epenet
 /homeassistant/components/sftp_storage/ @maretodoric

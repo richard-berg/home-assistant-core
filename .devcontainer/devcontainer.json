@@ -16,7 +16,10 @@
     "-e",
     "GIT_EDITOR=code --wait",
     "--security-opt",
-    "label=disable"
+    "label=disable",
+    "--network=host",
+    "--device=/dev/ttyUSB0",
+    "--group-add=dialout"
   ],
   "customizations": {
     "vscode": {
