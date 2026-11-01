@@ -1,0 +1,208 @@
+{
+  "entity": {
+    "button": {
+      "calibrate_all": {
+        "default": "mdi:tape-measure"
+      },
+      "calibrate_bottom": {
+        "default": "mdi:tape-measure"
+      },
+      "calibrate_horizontal": {
+        "default": "mdi:tape-measure"
+      },
+      "calibrate_left": {
+        "default": "mdi:tape-measure"
+      },
+      "calibrate_right": {
+        "default": "mdi:tape-measure"
+      },
+      "calibrate_top": {
+        "default": "mdi:tape-measure"
+      },
+      "calibrate_vertical": {
+        "default": "mdi:tape-measure"
+      },
+      "diagnostics_list_fs": {
+        "default": "mdi:clipboard-text"
+      },
+      "diagnostics_list_settings_json": {
+        "default": "mdi:clipboard-text"
+      },
+      "diagnostics_list_system_json": {
+        "default": "mdi:clipboard-text"
+      },
+      "halt_all": {
+        "default": "mdi:stop"
+      },
+      "halt_bottom": {
+        "default": "mdi:stop"
+      },
+      "halt_horizontal": {
+        "default": "mdi:stop"
+      },
+      "halt_left": {
+        "default": "mdi:stop"
+      },
+      "halt_right": {
+        "default": "mdi:stop"
+      },
+      "halt_top": {
+        "default": "mdi:stop"
+      },
+      "halt_vertical": {
+        "default": "mdi:stop"
+      },
+      "home_all": {
+        "default": "mdi:home"
+      },
+      "home_bottom": {
+        "default": "mdi:home"
+      },
+      "home_horizontal": {
+        "default": "mdi:home"
+      },
+      "home_left": {
+        "default": "mdi:home"
+      },
+      "home_right": {
+        "default": "mdi:home"
+      },
+      "home_top": {
+        "default": "mdi:home"
+      },
+      "home_vertical": {
+        "default": "mdi:home"
+      }
+    },
+    "cover": {
+      "mask_all": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_bottom": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_horizontal": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_left": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_right": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_top": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_vertical": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      }
+    },
+    "select": {
+      "move_in": {
+        "default": "mdi:arrow-collapse"
+      },
+      "move_out": {
+        "default": "mdi:arrow-expand"
+      },
+      "ratio_move": {
+        "default": "mdi:aspect-ratio"
+      },
+      "ratio_reset": {
+        "default": "mdi:restore"
+      },
+      "ratio_update": {
+        "default": "mdi:content-save"
+      }
+    },
+    "sensor": {
+      "connection_age": {
+        "default": "mdi:timer-outline"
+      },
+      "diagnostics": {
+        "default": "mdi:clipboard-text"
+      },
+      "dimension_height": {
+        "default": "mdi:arrow-expand-vertical"
+      },
+      "dimension_width": {
+        "default": "mdi:arrow-expand-horizontal"
+      },
+      "position_bottom": {
+        "default": "mdi:arrow-down"
+      },
+      "position_horizontal": {
+        "default": "mdi:arrow-left-right"
+      },
+      "position_left": {
+        "default": "mdi:arrow-left"
+      },
+      "position_right": {
+        "default": "mdi:arrow-right"
+      },
+      "position_top": {
+        "default": "mdi:arrow-up"
+      },
+      "position_vertical": {
+        "default": "mdi:arrow-up-down"
+      },
+      "ratio": {
+        "default": "mdi:aspect-ratio"
+      },
+      "status": {
+        "default": "mdi:information-outline",
+        "state": {
+          "calibrating": "mdi:tape-measure",
+          "error": "mdi:alert-circle",
+          "halted": "mdi:pause",
+          "homing": "mdi:home",
+          "moving_inward": "mdi:arrow-collapse",
+          "moving_outward": "mdi:arrow-expand",
+          "moving_to_ratio": "mdi:play",
+          "stopped_at_ratio": "mdi:check-circle"
+        }
+      }
+    }
+  }
+}

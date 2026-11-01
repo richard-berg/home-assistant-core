@@ -1,0 +1,12 @@
+{
+  "domain": "seymour_masking_screen",
+  "name": "Seymour Masking Screen",
+  "codeowners": ["@richard-berg"],
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/seymour_masking_screen",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "loggers": ["seymourlib"],
+  "quality_scale": "bronze",
+  "requirements": ["seymourlib[serial]==0.1.4"]
+}

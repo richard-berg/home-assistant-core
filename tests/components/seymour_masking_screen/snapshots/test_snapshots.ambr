@@ -1,0 +1,2145 @@
+# serializer version: 1
+# name: test_entities[button][button.seymour_reference_calibrate_all_masks-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_calibrate_all_masks',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Calibrate all masks',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Calibrate all masks',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'calibrate_all',
+    'unique_id': 'AB-0124-12345_calibrate_all',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_all_masks-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Calibrate all masks',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_calibrate_all_masks',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_bottom_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_calibrate_bottom_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Calibrate bottom mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Calibrate bottom mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'calibrate_bottom',
+    'unique_id': 'AB-0124-12345_calibrate_bottom',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_bottom_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Calibrate bottom mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_calibrate_bottom_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_left_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_calibrate_left_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Calibrate left mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Calibrate left mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'calibrate_left',
+    'unique_id': 'AB-0124-12345_calibrate_left',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_left_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Calibrate left mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_calibrate_left_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_right_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_calibrate_right_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Calibrate right mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Calibrate right mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'calibrate_right',
+    'unique_id': 'AB-0124-12345_calibrate_right',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_right_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Calibrate right mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_calibrate_right_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_top_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_calibrate_top_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Calibrate top mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Calibrate top mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'calibrate_top',
+    'unique_id': 'AB-0124-12345_calibrate_top',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_calibrate_top_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Calibrate top mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_calibrate_top_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_diagnostics_file_system-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'button.seymour_reference_diagnostics_file_system',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Diagnostics – file system',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Diagnostics – file system',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'diagnostics_list_fs',
+    'unique_id': 'AB-0124-12345_diagnostics_list_fs',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_diagnostics_file_system-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Diagnostics – file system',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_diagnostics_file_system',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_diagnostics_settings_json-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'button.seymour_reference_diagnostics_settings_json',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Diagnostics – settings JSON',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Diagnostics – settings JSON',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'diagnostics_list_settings_json',
+    'unique_id': 'AB-0124-12345_diagnostics_list_settings_json',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_diagnostics_settings_json-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Diagnostics – settings JSON',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_diagnostics_settings_json',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_diagnostics_system_json-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'button.seymour_reference_diagnostics_system_json',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Diagnostics – system JSON',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Diagnostics – system JSON',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'diagnostics_list_system_json',
+    'unique_id': 'AB-0124-12345_diagnostics_list_system_json',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_diagnostics_system_json-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Diagnostics – system JSON',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_diagnostics_system_json',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_all_masks-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': None,
+    'entity_id': 'button.seymour_reference_halt_all_masks',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Halt all masks',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Halt all masks',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'halt_all',
+    'unique_id': 'AB-0124-12345_halt_all',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_all_masks-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Halt all masks',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_halt_all_masks',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_bottom_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': None,
+    'entity_id': 'button.seymour_reference_halt_bottom_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Halt bottom mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Halt bottom mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'halt_bottom',
+    'unique_id': 'AB-0124-12345_halt_bottom',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_bottom_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Halt bottom mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_halt_bottom_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_left_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': None,
+    'entity_id': 'button.seymour_reference_halt_left_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Halt left mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Halt left mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'halt_left',
+    'unique_id': 'AB-0124-12345_halt_left',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_left_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Halt left mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_halt_left_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_right_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': None,
+    'entity_id': 'button.seymour_reference_halt_right_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Halt right mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Halt right mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'halt_right',
+    'unique_id': 'AB-0124-12345_halt_right',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_right_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Halt right mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_halt_right_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_top_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': None,
+    'entity_id': 'button.seymour_reference_halt_top_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Halt top mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Halt top mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'halt_top',
+    'unique_id': 'AB-0124-12345_halt_top',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_halt_top_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Halt top mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_halt_top_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_all_masks-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_home_all_masks',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Home all masks',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Home all masks',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'home_all',
+    'unique_id': 'AB-0124-12345_home_all',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_all_masks-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Home all masks',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_home_all_masks',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_bottom_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_home_bottom_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Home bottom mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Home bottom mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'home_bottom',
+    'unique_id': 'AB-0124-12345_home_bottom',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_bottom_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Home bottom mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_home_bottom_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_left_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_home_left_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Home left mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Home left mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'home_left',
+    'unique_id': 'AB-0124-12345_home_left',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_left_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Home left mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_home_left_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_right_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_home_right_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Home right mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Home right mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'home_right',
+    'unique_id': 'AB-0124-12345_home_right',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_right_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Home right mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_home_right_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_top_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.seymour_reference_home_top_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Home top mask',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Home top mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'home_top',
+    'unique_id': 'AB-0124-12345_home_top',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.seymour_reference_home_top_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Home top mask',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.seymour_reference_home_top_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_all_masks-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'cover',
+    'entity_category': None,
+    'entity_id': 'cover.seymour_reference_all_masks',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'All masks',
+    'options': dict({
+    }),
+    'original_device_class': <CoverDeviceClass.SHADE: 'shade'>,
+    'original_icon': None,
+    'original_name': 'All masks',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <CoverEntityFeature: 15>,
+    'translation_key': 'mask_all',
+    'unique_id': 'AB-0124-12345_mask_all',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_all_masks-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_position': 82,
+      'device_class': 'shade',
+      'friendly_name': 'Seymour Reference All masks',
+      'supported_features': <CoverEntityFeature: 15>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'cover.seymour_reference_all_masks',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'open',
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_bottom_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'cover',
+    'entity_category': None,
+    'entity_id': 'cover.seymour_reference_bottom_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Bottom mask',
+    'options': dict({
+    }),
+    'original_device_class': <CoverDeviceClass.SHADE: 'shade'>,
+    'original_icon': None,
+    'original_name': 'Bottom mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <CoverEntityFeature: 11>,
+    'translation_key': 'mask_bottom',
+    'unique_id': 'AB-0124-12345_mask_bottom',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_bottom_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_position': 75,
+      'device_class': 'shade',
+      'friendly_name': 'Seymour Reference Bottom mask',
+      'supported_features': <CoverEntityFeature: 11>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'cover.seymour_reference_bottom_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'open',
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_horizontal_masks-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'cover',
+    'entity_category': None,
+    'entity_id': 'cover.seymour_reference_horizontal_masks',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Horizontal masks',
+    'options': dict({
+    }),
+    'original_device_class': <CoverDeviceClass.SHADE: 'shade'>,
+    'original_icon': None,
+    'original_name': 'Horizontal masks',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <CoverEntityFeature: 11>,
+    'translation_key': 'mask_horizontal',
+    'unique_id': 'AB-0124-12345_mask_horizontal',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_horizontal_masks-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_position': 90,
+      'device_class': 'shade',
+      'friendly_name': 'Seymour Reference Horizontal masks',
+      'supported_features': <CoverEntityFeature: 11>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'cover.seymour_reference_horizontal_masks',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'open',
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_left_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'cover',
+    'entity_category': None,
+    'entity_id': 'cover.seymour_reference_left_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Left mask',
+    'options': dict({
+    }),
+    'original_device_class': <CoverDeviceClass.SHADE: 'shade'>,
+    'original_icon': None,
+    'original_name': 'Left mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <CoverEntityFeature: 11>,
+    'translation_key': 'mask_left',
+    'unique_id': 'AB-0124-12345_mask_left',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_left_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_position': 90,
+      'device_class': 'shade',
+      'friendly_name': 'Seymour Reference Left mask',
+      'supported_features': <CoverEntityFeature: 11>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'cover.seymour_reference_left_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'open',
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_right_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'cover',
+    'entity_category': None,
+    'entity_id': 'cover.seymour_reference_right_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Right mask',
+    'options': dict({
+    }),
+    'original_device_class': <CoverDeviceClass.SHADE: 'shade'>,
+    'original_icon': None,
+    'original_name': 'Right mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <CoverEntityFeature: 11>,
+    'translation_key': 'mask_right',
+    'unique_id': 'AB-0124-12345_mask_right',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_right_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_position': 90,
+      'device_class': 'shade',
+      'friendly_name': 'Seymour Reference Right mask',
+      'supported_features': <CoverEntityFeature: 11>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'cover.seymour_reference_right_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'open',
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_top_mask-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'cover',
+    'entity_category': None,
+    'entity_id': 'cover.seymour_reference_top_mask',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Top mask',
+    'options': dict({
+    }),
+    'original_device_class': <CoverDeviceClass.SHADE: 'shade'>,
+    'original_icon': None,
+    'original_name': 'Top mask',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <CoverEntityFeature: 11>,
+    'translation_key': 'mask_top',
+    'unique_id': 'AB-0124-12345_mask_top',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_top_mask-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_position': 75,
+      'device_class': 'shade',
+      'friendly_name': 'Seymour Reference Top mask',
+      'supported_features': <CoverEntityFeature: 11>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'cover.seymour_reference_top_mask',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'open',
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_vertical_masks-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'cover',
+    'entity_category': None,
+    'entity_id': 'cover.seymour_reference_vertical_masks',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Vertical masks',
+    'options': dict({
+    }),
+    'original_device_class': <CoverDeviceClass.SHADE: 'shade'>,
+    'original_icon': None,
+    'original_name': 'Vertical masks',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <CoverEntityFeature: 11>,
+    'translation_key': 'mask_vertical',
+    'unique_id': 'AB-0124-12345_mask_vertical',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[cover][cover.seymour_reference_vertical_masks-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_position': 75,
+      'device_class': 'shade',
+      'friendly_name': 'Seymour Reference Vertical masks',
+      'supported_features': <CoverEntityFeature: 11>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'cover.seymour_reference_vertical_masks',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'open',
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_move_in-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        'All · Until Limit',
+        'All · Jog',
+        'All · Move',
+        'Bottom · Until Limit',
+        'Bottom · Jog',
+        'Bottom · Move',
+        'Left · Until Limit',
+        'Left · Jog',
+        'Left · Move',
+        'Right · Until Limit',
+        'Right · Jog',
+        'Right · Move',
+        'Top · Until Limit',
+        'Top · Jog',
+        'Top · Move',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.seymour_reference_move_in',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Move in',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Move in',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'move_in',
+    'unique_id': 'AB-0124-12345_move_in',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_move_in-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Move in',
+      'options': list([
+        'All · Until Limit',
+        'All · Jog',
+        'All · Move',
+        'Bottom · Until Limit',
+        'Bottom · Jog',
+        'Bottom · Move',
+        'Left · Until Limit',
+        'Left · Jog',
+        'Left · Move',
+        'Right · Until Limit',
+        'Right · Jog',
+        'Right · Move',
+        'Top · Until Limit',
+        'Top · Jog',
+        'Top · Move',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.seymour_reference_move_in',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_move_out-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        'All · Until Limit',
+        'All · Jog',
+        'All · Move',
+        'Bottom · Until Limit',
+        'Bottom · Jog',
+        'Bottom · Move',
+        'Left · Until Limit',
+        'Left · Jog',
+        'Left · Move',
+        'Right · Until Limit',
+        'Right · Jog',
+        'Right · Move',
+        'Top · Until Limit',
+        'Top · Jog',
+        'Top · Move',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.seymour_reference_move_out',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Move out',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Move out',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'move_out',
+    'unique_id': 'AB-0124-12345_move_out',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_move_out-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Move out',
+      'options': list([
+        'All · Until Limit',
+        'All · Jog',
+        'All · Move',
+        'Bottom · Until Limit',
+        'Bottom · Jog',
+        'Bottom · Move',
+        'Left · Until Limit',
+        'Left · Jog',
+        'Left · Move',
+        'Right · Until Limit',
+        'Right · Jog',
+        'Right · Move',
+        'Top · Until Limit',
+        'Top · Jog',
+        'Top · Move',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.seymour_reference_move_out',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_move_to_ratio-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        '16:9 (178)',
+        '2.35:1 (235)',
+        '2.40:1 (240)',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.seymour_reference_move_to_ratio',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Move to ratio',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Move to ratio',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ratio_move',
+    'unique_id': 'AB-0124-12345_ratio_move',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_move_to_ratio-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Move to ratio',
+      'options': list([
+        '16:9 (178)',
+        '2.35:1 (235)',
+        '2.40:1 (240)',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.seymour_reference_move_to_ratio',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_reset_ratio-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        '16:9 (178)',
+        '2.35:1 (235)',
+        '2.40:1 (240)',
+        'All ratios (factory reset)',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.seymour_reference_reset_ratio',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Reset ratio',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Reset ratio',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ratio_reset',
+    'unique_id': 'AB-0124-12345_ratio_reset',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_reset_ratio-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Reset ratio',
+      'options': list([
+        '16:9 (178)',
+        '2.35:1 (235)',
+        '2.40:1 (240)',
+        'All ratios (factory reset)',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.seymour_reference_reset_ratio',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_update_ratio-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        '16:9 (178)',
+        '2.35:1 (235)',
+        '2.40:1 (240)',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'select.seymour_reference_update_ratio',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Update ratio',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Update ratio',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ratio_update',
+    'unique_id': 'AB-0124-12345_ratio_update',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[select][select.seymour_reference_update_ratio-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Update ratio',
+      'options': list([
+        '16:9 (178)',
+        '2.35:1 (235)',
+        '2.40:1 (240)',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.seymour_reference_update_ratio',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_bottom_mask_position-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.seymour_reference_bottom_mask_position',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Bottom mask position',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Bottom mask position',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'position_bottom',
+    'unique_id': 'AB-0124-12345_position_bottom',
+    'unit_of_measurement': '%',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_bottom_mask_position-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Bottom mask position',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': '%',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_bottom_mask_position',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '25.0',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_connection_age-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.seymour_reference_connection_age',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Connection age',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.DURATION: 'duration'>,
+    'original_icon': None,
+    'original_name': 'Connection age',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'connection_age',
+    'unique_id': 'AB-0124-12345_connection_age',
+    'unit_of_measurement': <UnitOfTime.SECONDS: 's'>,
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_connection_age-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'duration',
+      'friendly_name': 'Seymour Reference Connection age',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTime.SECONDS: 's'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_connection_age',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0.5',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_diagnostics-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.seymour_reference_diagnostics',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Diagnostics',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Diagnostics',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'diagnostics',
+    'unique_id': 'AB-0124-12345_diagnostics',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_diagnostics-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Diagnostics',
+      'full_text': None,
+      'option': None,
+      'updated': None,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_diagnostics',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_left_mask_position-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.seymour_reference_left_mask_position',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Left mask position',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Left mask position',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'position_left',
+    'unique_id': 'AB-0124-12345_position_left',
+    'unit_of_measurement': '%',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_left_mask_position-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Left mask position',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': '%',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_left_mask_position',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '10.0',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_ratio-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.seymour_reference_ratio',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Ratio',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Ratio',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ratio',
+    'unique_id': 'AB-0124-12345_ratio',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_ratio-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'enum',
+      'friendly_name': 'Seymour Reference Ratio',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_ratio',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '16:9 (178)',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_right_mask_position-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.seymour_reference_right_mask_position',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Right mask position',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Right mask position',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'position_right',
+    'unique_id': 'AB-0124-12345_position_right',
+    'unit_of_measurement': '%',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_right_mask_position-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Right mask position',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': '%',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_right_mask_position',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '10.0',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_screen_height-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.seymour_reference_screen_height',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Screen height',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Screen height',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'dimension_height',
+    'unique_id': 'AB-0124-12345_dimension_height',
+    'unit_of_measurement': <UnitOfLength.INCHES: 'in'>,
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_screen_height-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Screen height',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfLength.INCHES: 'in'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_screen_height',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '67.5',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_screen_width-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.seymour_reference_screen_width',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Screen width',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Screen width',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'dimension_width',
+    'unique_id': 'AB-0124-12345_dimension_width',
+    'unit_of_measurement': <UnitOfLength.INCHES: 'in'>,
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_screen_width-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Screen width',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfLength.INCHES: 'in'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_screen_width',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '120.0',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_status-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        'stopped_at_ratio',
+        'moving_to_ratio',
+        'halted',
+        'homing',
+        'calibrating',
+        'moving_outward',
+        'moving_inward',
+        'error',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.seymour_reference_status',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Status',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Status',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'status',
+    'unique_id': 'AB-0124-12345_status',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_status-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'enum',
+      'friendly_name': 'Seymour Reference Status',
+      'options': list([
+        'stopped_at_ratio',
+        'moving_to_ratio',
+        'halted',
+        'homing',
+        'calibrating',
+        'moving_outward',
+        'moving_inward',
+        'error',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_status',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'stopped_at_ratio',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_top_mask_position-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.seymour_reference_top_mask_position',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Top mask position',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Top mask position',
+    'platform': 'seymour_masking_screen',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'position_top',
+    'unique_id': 'AB-0124-12345_position_top',
+    'unit_of_measurement': '%',
+  })
+# ---
+# name: test_entities[sensor][sensor.seymour_reference_top_mask_position-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Seymour Reference Top mask position',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': '%',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.seymour_reference_top_mask_position',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '25.0',
+  })
+# ---

@@ -1,0 +1,221 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This Seymour masking screen is already configured.",
+      "no_devices_found": "No Seymour masking screens were discovered.",
+      "reauth_successful": "Reauthentication completed successfully.",
+      "reconfigure_successful": "Reconfiguration completed successfully.",
+      "unknown": "The selected device is no longer available. Start the flow again.",
+      "wrong_account": "The provided controller does not match the entry being updated."
+    },
+    "error": {
+      "cannot_connect": "Failed to connect. Check the wiring, power, and network/serial settings.",
+      "invalid_serial": "The serial port is invalid or inaccessible.",
+      "unknown": "An unexpected error occurred. Check the logs for details."
+    },
+    "step": {
+      "manual_ip": {
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "host": "IP address or hostname of the Global Cache iTach IP2SL device.",
+          "port": "TCP port number (default is usually correct)."
+        },
+        "description": "Enter the IP address (and optional port) for the Global Cache iTach IP2SL.",
+        "title": "Global Cache IP2SL"
+      },
+      "manual_serial": {
+        "data": {
+          "serial_port": "Serial port"
+        },
+        "data_description": {
+          "serial_port": "Full path to the serial device, for example `/dev/ttyUSB0`."
+        },
+        "description": "Enter the full serial device path (for example /dev/ttyUSB0).",
+        "title": "Serial connection"
+      },
+      "user": {
+        "data": {
+          "selection": "Device or setup option"
+        },
+        "data_description": {
+          "selection": "Choose a discovered masking screen controller or a manual configuration method."
+        },
+        "description": "Select a discovered controller or choose a manual setup path."
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "calibrate_all": {
+        "name": "Calibrate all masks"
+      },
+      "calibrate_bottom": {
+        "name": "Calibrate bottom mask"
+      },
+      "calibrate_horizontal": {
+        "name": "Calibrate horizontal mask"
+      },
+      "calibrate_left": {
+        "name": "Calibrate left mask"
+      },
+      "calibrate_right": {
+        "name": "Calibrate right mask"
+      },
+      "calibrate_top": {
+        "name": "Calibrate top mask"
+      },
+      "calibrate_vertical": {
+        "name": "Calibrate vertical mask"
+      },
+      "diagnostics_list_fs": {
+        "name": "Diagnostics – file system"
+      },
+      "diagnostics_list_settings_json": {
+        "name": "Diagnostics – settings JSON"
+      },
+      "diagnostics_list_system_json": {
+        "name": "Diagnostics – system JSON"
+      },
+      "halt_all": {
+        "name": "Halt all masks"
+      },
+      "halt_bottom": {
+        "name": "Halt bottom mask"
+      },
+      "halt_horizontal": {
+        "name": "Halt horizontal mask"
+      },
+      "halt_left": {
+        "name": "Halt left mask"
+      },
+      "halt_right": {
+        "name": "Halt right mask"
+      },
+      "halt_top": {
+        "name": "Halt top mask"
+      },
+      "halt_vertical": {
+        "name": "Halt vertical mask"
+      },
+      "home_all": {
+        "name": "Home all masks"
+      },
+      "home_bottom": {
+        "name": "Home bottom mask"
+      },
+      "home_horizontal": {
+        "name": "Home horizontal mask"
+      },
+      "home_left": {
+        "name": "Home left mask"
+      },
+      "home_right": {
+        "name": "Home right mask"
+      },
+      "home_top": {
+        "name": "Home top mask"
+      },
+      "home_vertical": {
+        "name": "Home vertical mask"
+      }
+    },
+    "cover": {
+      "mask_all": {
+        "name": "All masks"
+      },
+      "mask_bottom": {
+        "name": "Bottom mask"
+      },
+      "mask_horizontal": {
+        "name": "Horizontal masks"
+      },
+      "mask_left": {
+        "name": "Left mask"
+      },
+      "mask_right": {
+        "name": "Right mask"
+      },
+      "mask_top": {
+        "name": "Top mask"
+      },
+      "mask_vertical": {
+        "name": "Vertical masks"
+      }
+    },
+    "select": {
+      "move_in": {
+        "name": "Move in"
+      },
+      "move_out": {
+        "name": "Move out"
+      },
+      "ratio_move": {
+        "name": "Move to ratio"
+      },
+      "ratio_reset": {
+        "name": "Reset ratio"
+      },
+      "ratio_update": {
+        "name": "Update ratio"
+      }
+    },
+    "sensor": {
+      "connection_age": {
+        "name": "Connection age"
+      },
+      "diagnostics": {
+        "name": "Diagnostics"
+      },
+      "dimension_height": {
+        "name": "Screen height"
+      },
+      "dimension_width": {
+        "name": "Screen width"
+      },
+      "position_bottom": {
+        "name": "Bottom mask position"
+      },
+      "position_horizontal": {
+        "name": "Horizontal mask position"
+      },
+      "position_left": {
+        "name": "Left mask position"
+      },
+      "position_right": {
+        "name": "Right mask position"
+      },
+      "position_top": {
+        "name": "Top mask position"
+      },
+      "position_vertical": {
+        "name": "Vertical mask position"
+      },
+      "ratio": {
+        "name": "Ratio"
+      },
+      "status": {
+        "name": "Status"
+      }
+    }
+  },
+  "exceptions": {
+    "not_at_home": {
+      "message": "The masks must be at the home position before moving to a ratio preset. Use the home button to return all masks to their home position, then try again."
+    },
+    "unknown_move_option": {
+      "message": "The selected move option is not recognized."
+    },
+    "unknown_ratio": {
+      "message": "The selected ratio preset is not recognized."
+    }
+  },
+  "issues": {
+    "transport_unreachable": {
+      "description": "Home Assistant has been unable to contact the Seymour masking screen after multiple attempts. Verify the cabling, transport (serial or IP2SL), and power, then reload the integration.",
+      "title": "Unable to reach the Seymour masking screen"
+    }
+  }
+}
