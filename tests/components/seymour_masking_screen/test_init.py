@@ -7,15 +7,17 @@ from freezegun.api import FrozenDateTimeFactory
 import pytest
 from pytest_homeassistant.common import MockConfigEntry, async_fire_time_changed
 from seymourlib.exceptions import SeymourConnectionError, SeymourProtocolError
+from seymourlib.protocol import decode_system_info
 from syrupy.assertion import SnapshotAssertion
 
 from homeassistant.components.seymour_masking_screen.const import DOMAIN
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.const import CONF_DEVICE
 from homeassistant.core import HomeAssistant
+from homeassistant.data_entry_flow import FlowResult, FlowResultType
 from homeassistant.helpers import device_registry as dr, issue_registry as ir
 
-from . import SERIAL_NUMBER
+from . import MOCK_DEVICE, SERIAL_NUMBER
 
 
 async def test_setup_and_unload(
@@ -161,3 +163,74 @@ async def test_connection_reset_after_failures(
 
     await _poll(hass, freezer)
     assert mock_seymour_client.close.await_count == closes
+
+
+async def _start_reconfigure(hass: HomeAssistant, entry: MockConfigEntry) -> FlowResult:
+    """Start reconfiguring an entry, for a controller on a serial port."""
+    result = await entry.start_reconfigure_flow(hass)
+    return await hass.config_entries.flow.async_configure(
+        result["flow_id"], {"next_step_id": "serial"}
+    )
+
+
+async def test_reconfigure_releases_loaded_entry(
+    hass: HomeAssistant,
+    mock_seymour_client: AsyncMock,
+    init_integration: MockConfigEntry,
+) -> None:
+    """Test the loaded entry lets go of the controller while it is validated."""
+
+    mock_seymour_client.reset_mock()
+
+    result = await _start_reconfigure(hass, init_integration)
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {CONF_DEVICE: "/dev/serial/by-id/usb-FTDI-if00"}
+    )
+    await hass.async_block_till_done()
+
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "reconfigure_successful"
+    # Unloading the entry closed its connection before the validation opened one
+    commands = [name for name, _, _ in mock_seymour_client.mock_calls]
+    assert commands[:3] == ["close", "connect", "get_system_info"]
+    assert init_integration.state is ConfigEntryState.LOADED
+    assert init_integration.data == {CONF_DEVICE: "/dev/serial/by-id/usb-FTDI-if00"}
+
+
+@pytest.mark.parametrize(
+    ("validation", "reason"),
+    [
+        (
+            decode_system_info(
+                b"[01PRH-123             0123.00069.1SS-0325-99999TBLR]"
+            ),
+            "wrong_controller",
+        ),
+        (SeymourConnectionError(), None),
+    ],
+)
+async def test_reconfigure_restores_loaded_entry(
+    hass: HomeAssistant,
+    mock_seymour_client: AsyncMock,
+    init_integration: MockConfigEntry,
+    validation: object,
+    reason: str | None,
+) -> None:
+    """Test the entry is loaded again when reconfiguring doesn't succeed."""
+    original = mock_seymour_client.get_system_info.return_value
+    # The new port answers with the validation, then the entry reloads
+    mock_seymour_client.get_system_info.side_effect = [validation, original]
+
+    result = await _start_reconfigure(hass, init_integration)
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {CONF_DEVICE: "/dev/ttyUSB1"}
+    )
+    await hass.async_block_till_done()
+
+    if reason:
+        assert result["type"] is FlowResultType.ABORT
+        assert result["reason"] == reason
+    else:
+        assert result["errors"] == {"base": "cannot_connect"}
+    assert init_integration.state is ConfigEntryState.LOADED
+    assert init_integration.data == {CONF_DEVICE: MOCK_DEVICE}

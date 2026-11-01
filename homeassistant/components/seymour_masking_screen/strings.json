@@ -155,6 +155,9 @@
     "command_failed": {
       "message": "The Seymour controller did not accept the command: {error}"
     },
+    "homing_incomplete": {
+      "message": "The masks stopped before they reached the home position, so the screen did not move to the ratio preset. Check that nothing blocks the masks, and try again."
+    },
     "homing_timeout": {
       "message": "The masks did not finish homing in time, so the screen did not move to the ratio preset."
     },

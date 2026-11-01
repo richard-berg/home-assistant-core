@@ -115,11 +115,16 @@ class SeymourAspectRatioSelect(SeymourEntity, SelectEntity):
         """
         ratio = self.ratio_for_option(option)
         client = self.runtime_data.client
-        mask_ids = self.runtime_data.metadata.data.system_info.mask_ids
         try:
-            if not is_at_home(self.coordinator.data.positions, mask_ids):
+            if not await self._async_at_home():
                 await client.home(MotorID.ALL)
                 await self._async_wait_until_stopped()
+                # Homing can also end in a halt or an error, short of home
+                if not await self._async_at_home():
+                    raise HomeAssistantError(
+                        translation_domain=DOMAIN,
+                        translation_key="homing_incomplete",
+                    )
             await client.move_to_ratio(ratio)
         except SeymourError as err:
             raise HomeAssistantError(
@@ -128,6 +133,22 @@ class SeymourAspectRatioSelect(SeymourEntity, SelectEntity):
                 translation_placeholders={"error": str(err)},
             ) from err
         await self.coordinator.async_request_refresh()
+
+    async def _async_at_home(self) -> bool:
+        """Return whether the masks are at rest in the home position.
+
+        Asks the controller, since the polled data can be seconds old.
+        """
+        client = self.runtime_data.client
+        status = await client.get_status()
+        if status.code in MOVING_STATUS_CODES or status.code is StatusCode.ERROR:
+            return False
+        positions = {
+            pos.motor_id: pos.position_pct for pos in await client.get_positions()
+        }
+        return is_at_home(
+            positions, self.runtime_data.metadata.data.system_info.mask_ids
+        )
 
     async def _async_wait_until_stopped(self) -> None:
         """Wait until the masks stop moving."""

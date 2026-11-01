@@ -17,10 +17,12 @@ from seymourlib.transport import ITACH_SERIAL_PORT, URLTransport, tcp_url
 
 from homeassistant.config_entries import (
     SOURCE_RECONFIGURE,
+    ConfigEntryState,
     ConfigFlow,
     ConfigFlowResult,
 )
 from homeassistant.const import CONF_DEVICE, CONF_HOST, CONF_PORT
+from homeassistant.core import callback
 from homeassistant.helpers.selector import (
     NumberSelector,
     NumberSelectorConfig,
@@ -94,6 +96,7 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         """Initialize the config flow."""
         self._discovery_task: asyncio.Task[list[TCPTransportCandidate]] | None = None
         self._discovered: list[TCPTransportCandidate] = []
+        self._released_entry = False
 
     @override
     async def async_step_user(
@@ -216,6 +219,7 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         self, url: str, errors: dict[str, str]
     ) -> SystemInfo | None:
         """Read the system info of the controller, or record an error."""
+        await self._async_release_reconfigure_entry()
         try:
             return await _async_get_system_info(url)
         except SeymourConnectionError:
@@ -225,7 +229,30 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         except Exception:  # noqa: BLE001
             LOGGER.exception("Unexpected exception")
             errors["base"] = "unknown"
+        self._async_restore_reconfigure_entry()
         return None
+
+    async def _async_release_reconfigure_entry(self) -> None:
+        """Unload the entry being reconfigured, so its connection is free.
+
+        The controller accepts a single connection, which the loaded entry
+        holds, also when the new port is another name for the same one.
+        """
+        if self.source != SOURCE_RECONFIGURE:
+            return
+        entry = self._get_reconfigure_entry()
+        if entry.state is ConfigEntryState.LOADED:
+            await self.hass.config_entries.async_unload(entry.entry_id)
+            self._released_entry = True
+
+    @callback
+    def _async_restore_reconfigure_entry(self) -> None:
+        """Load the entry being reconfigured again, if it was unloaded."""
+        if self._released_entry:
+            self._released_entry = False
+            self.hass.config_entries.async_schedule_reload(
+                self._get_reconfigure_entry().entry_id
+            )
 
     async def _async_create_entry(
         self, url: str, system_info: SystemInfo
@@ -233,7 +260,9 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         """Create the config entry for a validated controller."""
         await self.async_set_unique_id(system_info.serial_number.to_serial_number())
         if self.source == SOURCE_RECONFIGURE:
-            self._abort_if_unique_id_mismatch(reason="wrong_controller")
+            if self.unique_id != self._get_reconfigure_entry().unique_id:
+                self._async_restore_reconfigure_entry()
+                return self.async_abort(reason="wrong_controller")
             return self.async_update_reload_and_abort(
                 self._get_reconfigure_entry(), data_updates={CONF_DEVICE: url}
             )

@@ -80,51 +80,112 @@ async def test_current_option(
     assert state.state == expected
 
 
-@pytest.mark.usefixtures("init_integration")
-async def test_select_ratio_at_home(
-    hass: HomeAssistant,
-    mock_seymour_client: AsyncMock,
-    freezer: FrozenDateTimeFactory,
-) -> None:
-    """Test selecting a preset from the home position moves straight there."""
-    mock_seymour_client.get_positions.return_value = decode_positions(HOME_POSITIONS)
-    await _poll(hass, freezer)
+def _commands(client: AsyncMock) -> list[str]:
+    """Return the names of the client methods called, in order."""
+    return [name for name, _, _ in client.mock_calls]
 
+
+async def _select(hass: HomeAssistant, option: str = "2.35:1 (235)") -> None:
+    """Select a ratio preset."""
     await hass.services.async_call(
         SELECT_DOMAIN,
         SERVICE_SELECT_OPTION,
-        {ATTR_ENTITY_ID: ASPECT_RATIO, ATTR_OPTION: "2.35:1 (235)"},
+        {ATTR_ENTITY_ID: ASPECT_RATIO, ATTR_OPTION: option},
         blocking=True,
     )
 
+
+@pytest.mark.usefixtures("init_integration")
+async def test_select_ratio_at_home(
+    hass: HomeAssistant, mock_seymour_client: AsyncMock
+) -> None:
+    """Test selecting a preset from the home position moves straight there."""
+    mock_seymour_client.get_positions.return_value = decode_positions(HOME_POSITIONS)
+    mock_seymour_client.reset_mock()
+
+    await _select(hass)
+
+    assert _commands(mock_seymour_client)[:3] == [
+        "get_status",
+        "get_positions",
+        "move_to_ratio",
+    ]
     mock_seymour_client.home.assert_not_awaited()
     mock_seymour_client.move_to_ratio.assert_awaited_once_with(Ratio("235"))
 
 
+@pytest.mark.parametrize(
+    "status_frame",
+    [
+        # Away from home and at rest
+        b"[01H]",
+        # Still moving, or in error, even with positions that read as home
+        b"[01M240]",
+        b"[01E]",
+    ],
+)
 @pytest.mark.usefixtures("init_integration")
 async def test_select_ratio_homes_first(
-    hass: HomeAssistant, mock_seymour_client: AsyncMock
+    hass: HomeAssistant, mock_seymour_client: AsyncMock, status_frame: bytes
 ) -> None:
-    """Test selecting a preset away from home homes the masks first."""
+    """Test the masks are homed, and the homing waited for, before the move."""
+    away = decode_positions(
+        HOME_POSITIONS if status_frame != b"[01H]" else b"[014T25.0B25.0L10.0R10.0]"
+    )
     mock_seymour_client.get_status.side_effect = [
+        decode_status(status_frame),
         decode_status(b"[01A]"),
+        decode_status(b"[01A]"),
+        decode_status(b"[01H]"),
         decode_status(b"[01H]"),
         decode_status(b"[01M235]"),
     ]
+    mock_seymour_client.get_positions.side_effect = [
+        away,
+        decode_positions(HOME_POSITIONS),
+        decode_positions(HOME_POSITIONS),
+    ]
+    mock_seymour_client.reset_mock()
 
     with patch(
         "homeassistant.components.seymour_masking_screen.select.HOMING_POLL_INTERVAL",
         0,
     ):
-        await hass.services.async_call(
-            SELECT_DOMAIN,
-            SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: ASPECT_RATIO, ATTR_OPTION: "2.35:1 (235)"},
-            blocking=True,
-        )
+        await _select(hass)
 
+    commands = _commands(mock_seymour_client)
+    home = commands.index("home")
+    move = commands.index("move_to_ratio")
+    # Wait until homing ends, then check the masks really are home
+    assert commands[home:move] == [
+        "home",
+        "get_status",
+        "get_status",
+        "get_status",
+        "get_status",
+        "get_positions",
+    ]
     mock_seymour_client.home.assert_awaited_once_with(MotorID.ALL)
     mock_seymour_client.move_to_ratio.assert_awaited_once_with(Ratio("235"))
+
+
+@pytest.mark.parametrize("final_status", [b"[01H]", b"[01E]"])
+@pytest.mark.usefixtures("init_integration")
+async def test_select_ratio_homing_incomplete(
+    hass: HomeAssistant, mock_seymour_client: AsyncMock, final_status: bytes
+) -> None:
+    """Test no preset move follows a homing that stopped short of home."""
+    mock_seymour_client.get_status.side_effect = [
+        decode_status(b"[01H]"),
+        decode_status(final_status),
+        decode_status(final_status),
+    ]
+
+    with pytest.raises(HomeAssistantError) as exc_info:
+        await _select(hass)
+
+    assert exc_info.value.translation_key == "homing_incomplete"
+    mock_seymour_client.move_to_ratio.assert_not_awaited()
 
 
 @pytest.mark.usefixtures("init_integration")
@@ -145,12 +206,7 @@ async def test_select_ratio_homing_timeout(
         ),
         pytest.raises(HomeAssistantError) as exc_info,
     ):
-        await hass.services.async_call(
-            SELECT_DOMAIN,
-            SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: ASPECT_RATIO, ATTR_OPTION: "2.35:1 (235)"},
-            blocking=True,
-        )
+        await _select(hass)
 
     assert exc_info.value.translation_key == "homing_timeout"
     mock_seymour_client.move_to_ratio.assert_not_awaited()
@@ -158,22 +214,14 @@ async def test_select_ratio_homing_timeout(
 
 @pytest.mark.usefixtures("init_integration")
 async def test_select_ratio_failure(
-    hass: HomeAssistant,
-    mock_seymour_client: AsyncMock,
-    freezer: FrozenDateTimeFactory,
+    hass: HomeAssistant, mock_seymour_client: AsyncMock
 ) -> None:
     """Test a failed preset move raises a translated error."""
     mock_seymour_client.get_positions.return_value = decode_positions(HOME_POSITIONS)
-    await _poll(hass, freezer)
     mock_seymour_client.move_to_ratio.side_effect = SeymourConnectionError
 
     with pytest.raises(HomeAssistantError) as exc_info:
-        await hass.services.async_call(
-            SELECT_DOMAIN,
-            SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: ASPECT_RATIO, ATTR_OPTION: "2.35:1 (235)"},
-            blocking=True,
-        )
+        await _select(hass)
 
     assert exc_info.value.translation_key == "command_failed"
 
