@@ -1,8 +1,10 @@
 """Cover platform for the Seymour Masking Screen integration.
 
-Each mask motor is exposed as a cover; when the screen has more than one
-mask, an extra cover controls all of them together. A cover is open when
-its mask is retracted and closed when it is fully extended.
+Each mask motor is exposed as a cover. Screens with both masks of a pair
+(top and bottom, or left and right) get a cover that moves the pair
+together, and screens with more than one mask get a cover for all masks.
+A cover is open when its masks are retracted and closed when they are fully
+extended; a group reports the average position of its masks.
 """
 
 from collections.abc import Awaitable
@@ -30,6 +32,12 @@ PARALLEL_UPDATES = 1
 # absorbs small encoder offsets.
 CLOSED_TOLERANCE = 2.0
 
+# The controller moves both masks of a pair with a single motor ID.
+MASK_PAIRS: dict[MotorID, tuple[MotorID, MotorID]] = {
+    MotorID.VERTICAL: (MotorID.TOP, MotorID.BOTTOM),
+    MotorID.HORIZONTAL: (MotorID.LEFT, MotorID.RIGHT),
+}
+
 
 async def async_setup_entry(
     hass: HomeAssistant,
@@ -41,13 +49,17 @@ async def async_setup_entry(
     mask_ids = list(coordinator.system_info.mask_ids)
 
     entities = [SeymourMaskCover(coordinator, motor, [motor]) for motor in mask_ids]
+    for pair, members in MASK_PAIRS.items():
+        # A screen with only this pair is already covered by the all masks cover
+        if set(members) <= set(mask_ids) and len(mask_ids) > len(members):
+            entities.append(SeymourMaskCover(coordinator, pair, list(members)))
     if len(mask_ids) > 1:
         entities.append(SeymourMaskCover(coordinator, MotorID.ALL, mask_ids))
     async_add_entities(entities)
 
 
 class SeymourMaskCover(SeymourEntity, CoverEntity):
-    """A mask motor, or all mask motors together, as a cover."""
+    """A mask motor, or a group of mask motors moving together, as a cover."""
 
     _attr_device_class = CoverDeviceClass.SHADE
     _attr_supported_features = (

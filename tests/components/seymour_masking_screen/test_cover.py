@@ -28,6 +28,8 @@ from homeassistant.helpers import entity_registry as er
 
 ALL_MASKS = "cover.seymour_prh_123_all_masks"
 TOP_MASK = "cover.seymour_prh_123_top_mask"
+VERTICAL_MASKS = "cover.seymour_prh_123_vertical_masks"
+HORIZONTAL_MASKS = "cover.seymour_prh_123_horizontal_masks"
 
 
 @pytest.mark.usefixtures("init_integration")
@@ -53,13 +55,35 @@ async def test_entities(
             ],
         ),
         (b"[01PRH-123             0123.00069.1SS-0325-12345T]", [TOP_MASK]),
+        (
+            b"[01PRH-123             0123.00069.1SS-0325-12345TBL]",
+            [
+                ALL_MASKS,
+                "cover.seymour_prh_123_bottom_mask",
+                "cover.seymour_prh_123_left_mask",
+                TOP_MASK,
+                VERTICAL_MASKS,
+            ],
+        ),
+        (
+            b"[01PRH-123             0123.00069.1SS-0325-12345TBLR]",
+            [
+                ALL_MASKS,
+                "cover.seymour_prh_123_bottom_mask",
+                HORIZONTAL_MASKS,
+                "cover.seymour_prh_123_left_mask",
+                "cover.seymour_prh_123_right_mask",
+                TOP_MASK,
+                VERTICAL_MASKS,
+            ],
+        ),
     ],
 )
 @pytest.mark.usefixtures("init_integration")
 async def test_entities_follow_mask_count(
     hass: HomeAssistant, entity_ids: list[str]
 ) -> None:
-    """Test the all masks cover is only created for screens with several masks."""
+    """Test the group covers created for each combination of masks."""
     assert sorted(hass.states.async_entity_ids(COVER_DOMAIN)) == entity_ids
 
 
@@ -102,6 +126,52 @@ async def test_cover_action_single_mask(
     mock_seymour_client.move_out.assert_awaited_once_with(
         MotorID.TOP, MovementCode.UNTIL_LIMIT
     )
+
+
+@pytest.mark.parametrize(
+    ("entity_id", "motor_id"),
+    [(VERTICAL_MASKS, MotorID.VERTICAL), (HORIZONTAL_MASKS, MotorID.HORIZONTAL)],
+)
+@pytest.mark.usefixtures("init_integration")
+async def test_cover_action_mask_pair(
+    hass: HomeAssistant,
+    mock_seymour_client: AsyncMock,
+    entity_id: str,
+    motor_id: MotorID,
+) -> None:
+    """Test a mask pair cover moves both masks with the pair's motor ID."""
+    await hass.services.async_call(
+        COVER_DOMAIN, SERVICE_CLOSE_COVER, {ATTR_ENTITY_ID: entity_id}, blocking=True
+    )
+
+    mock_seymour_client.move_in.assert_awaited_once_with(
+        motor_id, MovementCode.UNTIL_LIMIT
+    )
+
+
+@pytest.mark.usefixtures("init_integration")
+async def test_mask_pair_position(
+    hass: HomeAssistant,
+    mock_seymour_client: AsyncMock,
+    freezer: FrozenDateTimeFactory,
+) -> None:
+    """Test a mask pair reports the average position of its two masks."""
+    mock_seymour_client.get_positions.return_value = decode_positions(
+        b"[014T40.0B60.0L99.0R99.0]"
+    )
+    freezer.tick(timedelta(seconds=5))
+    async_fire_time_changed(hass)
+    await hass.async_block_till_done()
+
+    vertical = hass.states.get(VERTICAL_MASKS)
+    assert vertical is not None
+    assert vertical.state == CoverState.OPEN
+    assert vertical.attributes["current_position"] == 50
+
+    horizontal = hass.states.get(HORIZONTAL_MASKS)
+    assert horizontal is not None
+    assert horizontal.state == CoverState.CLOSED
+    assert horizontal.attributes["current_position"] == 1
 
 
 @pytest.mark.usefixtures("init_integration")
