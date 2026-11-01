@@ -1,0 +1,15 @@
+{
+  "domain": "seymour_masking_screen",
+  "name": "Seymour Masking Screen",
+  "categories": ["media_entertainment.tv_streaming", "blinds_curtains"],
+  "codeowners": ["@richard-berg"],
+  "config_flow": true,
+  "connectivity": ["serial", "network"],
+  "dependencies": ["usb"],
+  "documentation": "https://www.home-assistant.io/integrations/seymour_masking_screen",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "loggers": ["seymourlib"],
+  "quality_scale": "bronze",
+  "requirements": ["seymourlib==0.2.0"]
+}

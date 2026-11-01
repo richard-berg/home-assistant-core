@@ -1,0 +1,81 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+    },
+    "error": {
+      "cannot_connect": "No response from a Seymour controller. Check that you chose the port your controller is connected to, and that the controller is powered on.",
+      "not_seymour": "The device answered, but it doesn't look like a Seymour controller. Check that you chose the port your controller is connected to.",
+      "unknown": "[%key:common::config_flow::error::unknown%]"
+    },
+    "progress": {
+      "discover_ip2sl": "Looking for Global Caché IP2SL bridges on your network. This takes about {seconds} seconds."
+    },
+    "step": {
+      "ip2sl_host": {
+        "data": {
+          "host": "[%key:common::config_flow::data::host%]",
+          "port": "[%key:common::config_flow::data::port%]"
+        },
+        "data_description": {
+          "host": "The IP address or hostname of the IP2SL. Choose a discovered bridge or type an address.",
+          "port": "The TCP port that carries the raw serial data, usually 4999. Don't use 4998, which is the IP2SL's command port."
+        },
+        "description": "Enter the address of the Global Caché IP2SL that your Seymour controller is connected to.",
+        "title": "Global Caché IP2SL"
+      },
+      "serial": {
+        "data": {
+          "device": "Serial port"
+        },
+        "data_description": {
+          "device": "The serial port your Seymour controller is connected to, such as a USB serial adapter or an ESPHome serial proxy."
+        },
+        "title": "Serial port"
+      },
+      "user": {
+        "description": "How is your Seymour controller connected to Home Assistant?",
+        "menu_options": {
+          "ip2sl": "Network, through a Global Caché IP2SL",
+          "serial": "Serial port or serial proxy"
+        }
+      }
+    }
+  },
+  "entity": {
+    "cover": {
+      "mask_all": {
+        "name": "All masks"
+      },
+      "mask_bottom": {
+        "name": "Bottom mask"
+      },
+      "mask_horizontal": {
+        "name": "Horizontal masks"
+      },
+      "mask_left": {
+        "name": "Left mask"
+      },
+      "mask_right": {
+        "name": "Right mask"
+      },
+      "mask_top": {
+        "name": "Top mask"
+      },
+      "mask_vertical": {
+        "name": "Vertical masks"
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "Unable to connect to the Seymour controller on {device}."
+    },
+    "command_failed": {
+      "message": "The Seymour controller did not accept the command: {error}"
+    },
+    "update_failed": {
+      "message": "Unable to read the status of the Seymour controller: {error}"
+    }
+  }
+}

@@ -747,6 +747,7 @@ FLOWS = {
         "sentry",
         "senz",
         "seventeentrack",
+        "seymour_masking_screen",
         "sfr_box",
         "sftp_storage",
         "sharkiq",

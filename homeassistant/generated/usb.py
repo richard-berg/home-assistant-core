@@ -17,6 +17,7 @@ SERIAL_PORT_SELECTOR_INTEGRATIONS = [
     "neopool",
     "russound_rio",
     "samsung_exlink",
+    "seymour_masking_screen",
     "sofar",
     "solaredge_modbus",
     "tonewinner",

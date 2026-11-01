@@ -3167,6 +3167,9 @@ sentry-sdk==2.48.0
 # homeassistant.components.usb
 serialx==1.15.1
 
+# homeassistant.components.seymour_masking_screen
+seymourlib==0.2.0
+
 # homeassistant.components.sfr_box
 sfrbox-api==0.2.1
 

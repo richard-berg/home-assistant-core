@@ -1,0 +1,69 @@
+{
+  "entity": {
+    "cover": {
+      "mask_all": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_bottom": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_horizontal": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_left": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_right": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_top": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      },
+      "mask_vertical": {
+        "default": "mdi:projector-screen-variant",
+        "state": {
+          "closed": "mdi:projector-screen-variant-off",
+          "closing": "mdi:projector-screen-variant-off",
+          "open": "mdi:projector-screen-variant",
+          "opening": "mdi:projector-screen-variant"
+        }
+      }
+    }
+  }
+}

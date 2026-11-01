@@ -10231,6 +10231,20 @@
       "config_flow": true,
       "iot_class": "cloud_polling"
     },
+    "seymour_masking_screen": {
+      "name": "Seymour Masking Screen",
+      "integration_type": "device",
+      "categories": [
+        "media_entertainment.tv_streaming",
+        "blinds_curtains"
+      ],
+      "connectivity": [
+        "serial",
+        "network"
+      ],
+      "config_flow": true,
+      "iot_class": "local_polling"
+    },
     "sfr_box": {
       "name": "SFR Box",
       "integration_type": "device",
