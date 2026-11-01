@@ -1,7 +1,33 @@
 # Seymour Masking Screen — Implementation TODO
 
-_Last updated: 2026-02-23_
-_Target: Gold quality scale from the initial upstream PR._
+_Last updated: 2026-11-01_
+
+## Status (Nov 2026)
+
+This branch (`rberg-wip`, based on 2026.2.3) is now a historical snapshot.
+Active work lives on branch `seymour-masking-screen` (worktree
+`/workspaces/ha-dev`, based on upstream `dev`, Python 3.14 venv in `.venv`).
+It holds a minimal bronze-scope first PR: config flow + cover only.
+The remaining platforms below come back as follow-up PRs.
+
+seymourlib `serialx-migration` branch (unreleased 0.2.0) replaces
+pyserial-asyncio (forbidden by hassfest, blocked in HA since 2026.7) with
+serialx, adds `URLTransport`, strips serial-number padding, and fixes
+`SeymourClient.close()` leaking the IP2SL socket after a failed request.
+
+Next steps:
+
+- [ ] Merge + tag `v0.2.0` in seymourlib (tag triggers PyPI publish)
+- [ ] Write the home-assistant.io docs PR (unblocks bronze `docs-*` rules)
+- [ ] Re-submit brands PR as `core_integrations/seymour_masking_screen`,
+  linking the core PR (see home-assistant/brands#9134 review)
+- [ ] Flip `brands` + bronze `docs-*` to `done`, run hassfest, open core PR
+- [ ] Phase 8 hardware checks for movement (open/close/stop) on the new code
+- [ ] Follow-up PRs: sensors, ratio select, buttons, diagnostics, repairs,
+  reconfigure flow
+
+_Original target (superseded by the minimal first PR above): Gold quality
+scale from the initial upstream PR._
 
 See [NOTES.md](NOTES.md) for background research, library API reference, and
 architecture decisions.
