@@ -15,7 +15,11 @@ from seymourlib.exceptions import SeymourConnectionError, SeymourError
 from seymourlib.protocol import SystemInfo
 from seymourlib.transport import ITACH_SERIAL_PORT, URLTransport, tcp_url
 
-from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
+from homeassistant.config_entries import (
+    SOURCE_RECONFIGURE,
+    ConfigFlow,
+    ConfigFlowResult,
+)
 from homeassistant.const import CONF_DEVICE, CONF_HOST, CONF_PORT
 from homeassistant.helpers.selector import (
     NumberSelector,
@@ -61,6 +65,16 @@ async def _async_get_system_info(url: str) -> SystemInfo:
         await client.close()
 
 
+def _split_tcp_url(url: str) -> tuple[str, int] | None:
+    """Return the host and port of a `socket://` URL, if it is one."""
+    if not url.startswith("socket://"):
+        return None
+    host, _, port = url.removeprefix("socket://").rpartition(":")
+    if not host or not port.isdigit():
+        return None
+    return host.strip("[]"), int(port)
+
+
 async def _async_discover_ip2sl() -> list[TCPTransportCandidate]:
     """Listen for Global Caché IP2SL discovery beacons."""
     try:
@@ -88,6 +102,22 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         """Ask how the controller is connected."""
         return self.async_show_menu(step_id="user", menu_options=["serial", "ip2sl"])
 
+    async def async_step_reconfigure(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Ask how the controller is connected now."""
+        return self.async_show_menu(
+            step_id="reconfigure", menu_options=["serial", "ip2sl"]
+        )
+
+    @property
+    def _current_device(self) -> str | None:
+        """Return the device of the entry being reconfigured."""
+        if self.source != SOURCE_RECONFIGURE:
+            return None
+        device: str = self._get_reconfigure_entry().data[CONF_DEVICE]
+        return device
+
     async def async_step_serial(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
@@ -95,15 +125,19 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
         if user_input is not None:
             url = user_input[CONF_DEVICE]
-            self._async_abort_entries_match({CONF_DEVICE: url})
+            if self.source != SOURCE_RECONFIGURE:
+                self._async_abort_entries_match({CONF_DEVICE: url})
             if system_info := await self._async_validate(url, errors):
                 return await self._async_create_entry(url, system_info)
 
+        suggested: dict[str, Any] = {}
+        if (device := self._current_device) and not _split_tcp_url(device):
+            suggested[CONF_DEVICE] = device
         return self.async_show_form(
             step_id="serial",
             data_schema=self.add_suggested_values_to_schema(
                 probatio.Schema({probatio.Required(CONF_DEVICE): SerialPortSelector()}),
-                user_input or {},
+                user_input or suggested,
             ),
             errors=errors,
         )
@@ -133,7 +167,8 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
         if user_input is not None:
             url = tcp_url(user_input[CONF_HOST].strip(), int(user_input[CONF_PORT]))
-            self._async_abort_entries_match({CONF_DEVICE: url})
+            if self.source != SOURCE_RECONFIGURE:
+                self._async_abort_entries_match({CONF_DEVICE: url})
             if system_info := await self._async_validate(url, errors):
                 return await self._async_create_entry(url, system_info)
 
@@ -157,6 +192,8 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
         suggested: dict[str, Any] = {CONF_PORT: ITACH_SERIAL_PORT}
         if self._discovered:
             suggested[CONF_HOST] = self._discovered[0].host
+        if (device := self._current_device) and (current := _split_tcp_url(device)):
+            suggested[CONF_HOST], suggested[CONF_PORT] = current
         return self.async_show_form(
             step_id="ip2sl_host",
             data_schema=self.add_suggested_values_to_schema(
@@ -195,6 +232,11 @@ class SeymourConfigFlow(ConfigFlow, domain=DOMAIN):
     ) -> ConfigFlowResult:
         """Create the config entry for a validated controller."""
         await self.async_set_unique_id(system_info.serial_number.to_serial_number())
+        if self.source == SOURCE_RECONFIGURE:
+            self._abort_if_unique_id_mismatch(reason="wrong_controller")
+            return self.async_update_reload_and_abort(
+                self._get_reconfigure_entry(), data_updates={CONF_DEVICE: url}
+            )
         self._abort_if_unique_id_configured(updates={CONF_DEVICE: url})
         model = system_info.screen_model or None
         return self.async_create_entry(

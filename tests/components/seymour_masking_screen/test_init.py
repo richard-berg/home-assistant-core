@@ -1,17 +1,19 @@
 """Tests for the Seymour Masking Screen integration setup."""
 
+from datetime import timedelta
 from unittest.mock import AsyncMock
 
+from freezegun.api import FrozenDateTimeFactory
 import pytest
-from pytest_homeassistant.common import MockConfigEntry
-from seymourlib.exceptions import SeymourConnectionError
+from pytest_homeassistant.common import MockConfigEntry, async_fire_time_changed
+from seymourlib.exceptions import SeymourConnectionError, SeymourProtocolError
 from syrupy.assertion import SnapshotAssertion
 
 from homeassistant.components.seymour_masking_screen.const import DOMAIN
 from homeassistant.config_entries import ConfigEntryState
 from homeassistant.const import CONF_DEVICE
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers import device_registry as dr
+from homeassistant.helpers import device_registry as dr, issue_registry as ir
 
 from . import SERIAL_NUMBER
 
@@ -45,7 +47,9 @@ async def test_device_info(
     assert device == snapshot
 
 
-@pytest.mark.parametrize("method", ["connect", "get_system_info", "get_status"])
+@pytest.mark.parametrize(
+    "method", ["connect", "get_system_info", "get_ratio_settings", "get_status"]
+)
 async def test_setup_retry(
     hass: HomeAssistant,
     mock_config_entry: MockConfigEntry,
@@ -83,3 +87,77 @@ async def test_setup_retry_hides_api_key(
     assert entry.state is ConfigEntryState.SETUP_RETRY
     assert "esphome://proxy.local:6053/" in caplog.text
     assert "SECRET" not in caplog.text
+
+
+async def _poll(hass: HomeAssistant, freezer: FrozenDateTimeFactory) -> None:
+    """Let the status coordinator poll."""
+    freezer.tick(timedelta(seconds=5))
+    async_fire_time_changed(hass)
+    await hass.async_block_till_done()
+
+
+async def test_unreachable_issue(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_seymour_client: AsyncMock,
+    issue_registry: ir.IssueRegistry,
+    freezer: FrozenDateTimeFactory,
+) -> None:
+    """Test a repair issue is raised while the controller is unreachable."""
+    issue_id = f"unreachable_{init_integration.entry_id}"
+    mock_seymour_client.get_status.side_effect = SeymourConnectionError
+
+    for _ in range(2):
+        await _poll(hass, freezer)
+    assert issue_registry.async_get_issue(DOMAIN, issue_id) is None
+
+    await _poll(hass, freezer)
+    issue = issue_registry.async_get_issue(DOMAIN, issue_id)
+    assert issue is not None
+    assert issue.translation_placeholders == {"title": "Seymour PRH-123"}
+
+    mock_seymour_client.get_status.side_effect = None
+    await _poll(hass, freezer)
+    assert issue_registry.async_get_issue(DOMAIN, issue_id) is None
+
+
+async def test_unreachable_issue_removed_on_unload(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_seymour_client: AsyncMock,
+    issue_registry: ir.IssueRegistry,
+    freezer: FrozenDateTimeFactory,
+) -> None:
+    """Test the repair issue goes away with the config entry."""
+    mock_seymour_client.get_status.side_effect = SeymourConnectionError
+    for _ in range(3):
+        await _poll(hass, freezer)
+    assert len(issue_registry.issues) == 1
+
+    await hass.config_entries.async_unload(init_integration.entry_id)
+    await hass.async_block_till_done()
+
+    assert len(issue_registry.issues) == 0
+
+
+@pytest.mark.parametrize(
+    ("side_effect", "closes"),
+    [(SeymourConnectionError, 1), (SeymourProtocolError, 0)],
+)
+async def test_connection_reset_after_failures(
+    hass: HomeAssistant,
+    init_integration: MockConfigEntry,
+    mock_seymour_client: AsyncMock,
+    freezer: FrozenDateTimeFactory,
+    side_effect: type[Exception],
+    closes: int,
+) -> None:
+    """Test the connection is reset after repeated connection failures."""
+    mock_seymour_client.get_status.side_effect = side_effect
+
+    for _ in range(4):
+        await _poll(hass, freezer)
+    mock_seymour_client.close.assert_not_awaited()
+
+    await _poll(hass, freezer)
+    assert mock_seymour_client.close.await_count == closes

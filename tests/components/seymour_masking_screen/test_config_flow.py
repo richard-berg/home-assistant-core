@@ -7,6 +7,7 @@ import pytest
 from pytest_homeassistant.common import MockConfigEntry
 from seymourlib.discovery import DiscoveryError, TCPTransportCandidate
 from seymourlib.exceptions import SeymourConnectionError, SeymourProtocolError
+from seymourlib.protocol import decode_system_info
 from seymourlib.transport import TCPTransport
 
 from homeassistant.components.seymour_masking_screen.const import DOMAIN
@@ -224,3 +225,134 @@ async def test_ip2sl_flow_manual_host(
 
     assert result["type"] is FlowResultType.CREATE_ENTRY
     assert result["data"] == {CONF_DEVICE: "socket://ip2sl.local:5000"}
+
+
+async def _start_reconfigure(
+    hass: HomeAssistant, entry: MockConfigEntry, next_step_id: str
+) -> FlowResult:
+    """Start a reconfigure flow and pick a menu option."""
+    result = await entry.start_reconfigure_flow(hass)
+    assert result["type"] is FlowResultType.MENU
+    assert result["step_id"] == "reconfigure"
+    return await hass.config_entries.flow.async_configure(
+        result["flow_id"], {"next_step_id": next_step_id}
+    )
+
+
+async def test_reconfigure_serial(
+    hass: HomeAssistant,
+    mock_seymour_client: AsyncMock,
+    mock_config_entry: MockConfigEntry,
+) -> None:
+    """Test moving a controller to another serial port."""
+    mock_config_entry.add_to_hass(hass)
+
+    result = await _start_reconfigure(hass, mock_config_entry, "serial")
+    assert result["type"] is FlowResultType.FORM
+    schema = result["data_schema"].schema
+    device_key = next(key for key in schema if key == CONF_DEVICE)
+    assert device_key.description == {"suggested_value": MOCK_DEVICE}
+
+    # The current port of the entry itself doesn't count as already configured
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {CONF_DEVICE: MOCK_DEVICE}
+    )
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "reconfigure_successful"
+
+    result = await _start_reconfigure(hass, mock_config_entry, "serial")
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {CONF_DEVICE: MOCK_IP2SL_URL}
+    )
+
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "reconfigure_successful"
+    assert mock_config_entry.data == {CONF_DEVICE: MOCK_IP2SL_URL}
+
+
+async def test_reconfigure_ip2sl(
+    hass: HomeAssistant, mock_seymour_client: AsyncMock
+) -> None:
+    """Test moving a controller behind an IP2SL to another address."""
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={CONF_DEVICE: "socket://[fe80::1]:5000"},
+        unique_id=SERIAL_NUMBER,
+    )
+    entry.add_to_hass(hass)
+
+    with patch(DISCOVER, return_value=[]):
+        result = await _start_reconfigure(hass, entry, "ip2sl")
+        await hass.async_block_till_done()
+        result = await hass.config_entries.flow.async_configure(result["flow_id"])
+
+    schema = result["data_schema"].schema
+    suggested = {str(key): key.description for key in schema}
+    assert suggested == {
+        CONF_HOST: {"suggested_value": "fe80::1"},
+        CONF_PORT: {"suggested_value": 5000},
+    }
+
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {CONF_HOST: MOCK_IP2SL_HOST, CONF_PORT: 4999}
+    )
+
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "reconfigure_successful"
+    assert entry.data == {CONF_DEVICE: MOCK_IP2SL_URL}
+
+
+async def test_reconfigure_serial_not_prefilled_from_ip2sl(
+    hass: HomeAssistant, mock_seymour_client: AsyncMock
+) -> None:
+    """Test an IP2SL address is not suggested as a serial port."""
+    entry = MockConfigEntry(
+        domain=DOMAIN, data={CONF_DEVICE: MOCK_IP2SL_URL}, unique_id=SERIAL_NUMBER
+    )
+    entry.add_to_hass(hass)
+
+    result = await _start_reconfigure(hass, entry, "serial")
+
+    schema = result["data_schema"].schema
+    device_key = next(key for key in schema if key == CONF_DEVICE)
+    assert device_key.description is None
+
+
+async def test_reconfigure_wrong_controller(
+    hass: HomeAssistant,
+    mock_seymour_client: AsyncMock,
+    mock_config_entry: MockConfigEntry,
+) -> None:
+    """Test reconfiguring to a different controller is refused."""
+    mock_config_entry.add_to_hass(hass)
+    mock_seymour_client.get_system_info.return_value = decode_system_info(
+        b"[01PRH-123             0123.00069.1SS-0325-99999TBLR]"
+    )
+
+    result = await _start_reconfigure(hass, mock_config_entry, "serial")
+    result = await hass.config_entries.flow.async_configure(
+        result["flow_id"], {CONF_DEVICE: "/dev/ttyUSB1"}
+    )
+
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "wrong_controller"
+    assert mock_config_entry.data == {CONF_DEVICE: MOCK_DEVICE}
+
+
+@pytest.mark.parametrize(
+    "url", ["socket://:4999", "socket://host:port", "socket://host"]
+)
+async def test_reconfigure_malformed_socket_url(
+    hass: HomeAssistant, mock_seymour_client: AsyncMock, url: str
+) -> None:
+    """Test a malformed socket URL is suggested as a serial port instead."""
+    entry = MockConfigEntry(
+        domain=DOMAIN, data={CONF_DEVICE: url}, unique_id=SERIAL_NUMBER
+    )
+    entry.add_to_hass(hass)
+
+    result = await _start_reconfigure(hass, entry, "serial")
+
+    schema = result["data_schema"].schema
+    device_key = next(key for key in schema if key == CONF_DEVICE)
+    assert device_key.description == {"suggested_value": url}

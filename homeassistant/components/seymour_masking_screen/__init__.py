@@ -7,11 +7,33 @@ from seymourlib.transport import URLTransport
 from homeassistant.const import CONF_DEVICE, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
+from homeassistant.helpers import config_validation as cv, issue_registry as ir
+from homeassistant.helpers.typing import ConfigType
 
 from .const import DOMAIN
-from .coordinator import SeymourConfigEntry, SeymourCoordinator
+from .coordinator import (
+    ISSUE_UNREACHABLE,
+    SeymourConfigEntry,
+    SeymourMetadataCoordinator,
+    SeymourRuntimeData,
+    SeymourStatusCoordinator,
+)
+from .services import async_setup_services
 
-PLATFORMS: list[Platform] = [Platform.COVER]
+PLATFORMS: list[Platform] = [
+    Platform.BUTTON,
+    Platform.COVER,
+    Platform.SELECT,
+    Platform.SENSOR,
+]
+
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
+
+
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+    """Set up the Seymour Masking Screen integration."""
+    async_setup_services(hass)
+    return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: SeymourConfigEntry) -> None:
@@ -24,7 +46,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: SeymourConfigEntry) -> N
     # can't connect.
     try:
         await client.connect()
-        system_info = await client.get_system_info()
     except SeymourError as err:
         await client.close()
         raise ConfigEntryNotReady(
@@ -34,14 +55,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: SeymourConfigEntry) -> N
             translation_placeholders={"device": url.split("?", 1)[0]},
         ) from err
 
-    coordinator = SeymourCoordinator(hass, entry, client, system_info)
+    metadata = SeymourMetadataCoordinator(hass, entry, client)
+    status = SeymourStatusCoordinator(hass, entry, client)
     try:
-        await coordinator.async_config_entry_first_refresh()
+        await metadata.async_config_entry_first_refresh()
+        await status.async_config_entry_first_refresh()
     except ConfigEntryNotReady:
         await client.close()
         raise
 
-    entry.runtime_data = coordinator
+    entry.runtime_data = SeymourRuntimeData(
+        client=client, status=status, metadata=metadata
+    )
     entry.async_on_unload(client.close)
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
@@ -50,3 +75,4 @@ async def async_setup_entry(hass: HomeAssistant, entry: SeymourConfigEntry) -> N
 async def async_unload_entry(hass: HomeAssistant, entry: SeymourConfigEntry) -> None:
     """Unload a config entry."""
     await hass.config_entries.async_unload_platforms_or_raise(entry, PLATFORMS)
+    ir.async_delete_issue(hass, DOMAIN, f"{ISSUE_UNREACHABLE}_{entry.entry_id}")

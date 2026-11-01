@@ -6,16 +6,23 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from pytest_homeassistant.common import MockConfigEntry
 from seymourlib.client import SeymourClient
-from seymourlib.protocol import decode_positions, decode_status, decode_system_info
+from seymourlib.protocol import (
+    decode_positions,
+    decode_settings,
+    decode_status,
+    decode_system_info,
+)
 
+from homeassistant.components.seymour_masking_screen import PLATFORMS
 from homeassistant.components.seymour_masking_screen.const import DOMAIN
-from homeassistant.const import CONF_DEVICE
+from homeassistant.const import CONF_DEVICE, Platform
 from homeassistant.core import HomeAssistant
 
 from . import (
     MOCK_DEVICE,
     POSITIONS_FRAME,
     SERIAL_NUMBER,
+    SETTINGS_FRAME,
     STATUS_FRAME,
     SYSTEM_INFO_FRAME,
 )
@@ -50,6 +57,11 @@ def mock_seymour_client(system_info_frame: bytes) -> Generator[AsyncMock]:
     client.get_system_info.return_value = decode_system_info(system_info_frame)
     client.get_status.return_value = decode_status(STATUS_FRAME)
     client.get_positions.return_value = decode_positions(POSITIONS_FRAME)
+    client.get_ratio_settings.return_value = decode_settings(SETTINGS_FRAME)
+    client.connection_stats = {
+        "last_successful_operation": 0.0,
+        "time_since_last_success": -1,
+    }
     with (
         patch(
             "homeassistant.components.seymour_masking_screen.SeymourClient",
@@ -76,13 +88,21 @@ def mock_config_entry() -> MockConfigEntry:
 
 
 @pytest.fixture
+def platforms() -> list[Platform]:
+    """Return the platforms to set up."""
+    return PLATFORMS
+
+
+@pytest.fixture
 async def init_integration(
     hass: HomeAssistant,
     mock_config_entry: MockConfigEntry,
     mock_seymour_client: AsyncMock,
+    platforms: list[Platform],
 ) -> MockConfigEntry:
     """Set up the integration."""
     mock_config_entry.add_to_hass(hass)
-    await hass.config_entries.async_setup(mock_config_entry.entry_id)
-    await hass.async_block_till_done()
+    with patch("homeassistant.components.seymour_masking_screen.PLATFORMS", platforms):
+        await hass.config_entries.async_setup(mock_config_entry.entry_id)
+        await hass.async_block_till_done()
     return mock_config_entry

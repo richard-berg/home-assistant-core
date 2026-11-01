@@ -1,5 +1,49 @@
 {
   "entity": {
+    "button": {
+      "calibrate_all": {
+        "default": "mdi:tune-vertical"
+      },
+      "calibrate_bottom": {
+        "default": "mdi:tune-vertical"
+      },
+      "calibrate_horizontal": {
+        "default": "mdi:tune-vertical"
+      },
+      "calibrate_left": {
+        "default": "mdi:tune-vertical"
+      },
+      "calibrate_right": {
+        "default": "mdi:tune-vertical"
+      },
+      "calibrate_top": {
+        "default": "mdi:tune-vertical"
+      },
+      "calibrate_vertical": {
+        "default": "mdi:tune-vertical"
+      },
+      "home_all": {
+        "default": "mdi:home-import-outline"
+      },
+      "home_bottom": {
+        "default": "mdi:home-import-outline"
+      },
+      "home_horizontal": {
+        "default": "mdi:home-import-outline"
+      },
+      "home_left": {
+        "default": "mdi:home-import-outline"
+      },
+      "home_right": {
+        "default": "mdi:home-import-outline"
+      },
+      "home_top": {
+        "default": "mdi:home-import-outline"
+      },
+      "home_vertical": {
+        "default": "mdi:home-import-outline"
+      }
+    },
     "cover": {
       "mask_all": {
         "default": "mdi:projector-screen-variant",
@@ -64,6 +108,30 @@
           "opening": "mdi:projector-screen-variant"
         }
       }
+    },
+    "select": {
+      "aspect_ratio": {
+        "default": "mdi:aspect-ratio"
+      }
+    },
+    "sensor": {
+      "last_contact": {
+        "default": "mdi:lan-connect"
+      },
+      "status": {
+        "default": "mdi:projector-screen-variant"
+      }
+    }
+  },
+  "services": {
+    "move_mask": {
+      "service": "mdi:arrow-up-down"
+    },
+    "reset_ratio": {
+      "service": "mdi:restore"
+    },
+    "save_ratio": {
+      "service": "mdi:content-save"
     }
   }
 }

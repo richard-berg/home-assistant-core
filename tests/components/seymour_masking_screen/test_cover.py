@@ -21,7 +21,13 @@ from homeassistant.components.cover import (
     SERVICE_STOP_COVER,
     CoverState,
 )
-from homeassistant.const import ATTR_ENTITY_ID, STATE_UNAVAILABLE, STATE_UNKNOWN
+from homeassistant.components.seymour_masking_screen.const import DOMAIN
+from homeassistant.const import (
+    ATTR_ENTITY_ID,
+    STATE_UNAVAILABLE,
+    STATE_UNKNOWN,
+    Platform,
+)
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import entity_registry as er
@@ -30,6 +36,12 @@ ALL_MASKS = "cover.seymour_prh_123_all_masks"
 TOP_MASK = "cover.seymour_prh_123_top_mask"
 VERTICAL_MASKS = "cover.seymour_prh_123_vertical_masks"
 HORIZONTAL_MASKS = "cover.seymour_prh_123_horizontal_masks"
+
+
+@pytest.fixture
+def platforms() -> list[Platform]:
+    """Only set up the cover platform."""
+    return [Platform.COVER]
 
 
 @pytest.mark.usefixtures("init_integration")
@@ -296,3 +308,32 @@ async def test_cover_without_position(
     assert cover is not None
     assert cover.state == STATE_UNKNOWN
     assert "current_position" not in cover.attributes
+
+
+@pytest.mark.parametrize(
+    ("direction", "distance", "method", "movement"),
+    [
+        ("open", "jog", "move_out", MovementCode.JOG),
+        ("close", "percent", "move_in", MovementCode.MOVE),
+    ],
+)
+@pytest.mark.usefixtures("init_integration")
+async def test_move_mask(
+    hass: HomeAssistant,
+    mock_seymour_client: AsyncMock,
+    direction: str,
+    distance: str,
+    method: str,
+    movement: MovementCode,
+) -> None:
+    """Test the move mask action moves the masks a small step."""
+    await hass.services.async_call(
+        DOMAIN,
+        "move_mask",
+        {ATTR_ENTITY_ID: VERTICAL_MASKS, "direction": direction, "distance": distance},
+        blocking=True,
+    )
+
+    getattr(mock_seymour_client, method).assert_awaited_once_with(
+        MotorID.VERTICAL, movement
+    )
